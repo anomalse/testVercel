@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 
 app.use(express.static(__dirname + '/public'));
+app.use('/fruitVegForm',testFormRoute);
 
 // Create GET request
 app.get("/", (req, res) => {
@@ -13,10 +14,30 @@ app.get("/", (req, res) => {
 
   //note how the route NEED not be the same as the page that will be served! 
   app.get('/start',requestHandlerStart);
+  //coming from a GET request with vars from a form
+  app.get('/varsArePassing',requestGet);
 
-  function requestHandlerStart(request,response){
-    response.sendFile(__dirname + '/public/start.html');
+  function requestHandlerStart(req,res){
+    res.sendFile(__dirname + '/public/start.html');
 }
+
+
+function testFormRoute(req, res){
+  res.sendFile(__dirname + '/public/test_Form.html');
+}
+
+
+
+
+
+function requestGet(request,response){
+    // console.log(request.url);
+    // console.log(request.query);
+  response.send({message:"success:)",fruit:request.query.fruits,veg:request.query.vegs });
+  }
+  
+  app.
+
 
 // Initialize server
 app.listen(5000, () => {
