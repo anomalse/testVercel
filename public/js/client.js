@@ -12,7 +12,7 @@ window.onload=function(){
     console.log(favFruit);
     let jsonVals = {fruits : favFruit, vegs : favVeg}
  
-    let  response = await fetch('http://localhost:4200/varsArePassing/?' + new URLSearchParams(jsonVals));
+    let  response = await fetch('/varsArePassing/?' + new URLSearchParams(jsonVals));
      console.log("the response::: ")
      //console.log(await response.text());
      let jsonResp = await response.json();
