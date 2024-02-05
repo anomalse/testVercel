@@ -21,6 +21,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/fruitVegForm',testFormRoute);
 app.use('/postEx',handlePostEx);
 app.use("/upload_file_post", upload.single("uploaded_file"), postUploadHandler);
+//app.use("/upload_file_post", postUploadHandler);
 
 // Create GET request
 app.get("/", (req, res) => {
@@ -53,8 +54,8 @@ response.sendFile(__dirname + '/public/testFormPost.html');
  
  
 function postUploadHandler(req,res){
- console.log(req.body.veg);
- console.log(req.file);
+ console.log(req.body);
+ //console.log(req.file);
  res.send("success posting");
 
 }
