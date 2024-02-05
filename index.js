@@ -35,8 +35,7 @@ function requestGet(request,response){
     // console.log(request.query);
   response.send({message:"success:)",fruit:request.query.fruits,veg:request.query.vegs });
   }
-  
-  app.
+
 
 
 // Initialize server
