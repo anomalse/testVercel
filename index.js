@@ -4,8 +4,23 @@ const express = require("express");
 // Initialize Express
 const app = express();
 
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploaded_images/');
+  },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+  })
+  
+const upload = multer({ storage: storage });
+
 app.use(express.static(__dirname + '/public'));
 app.use('/fruitVegForm',testFormRoute);
+app.use('/postEx',handlePostEx);
+app.use("/upload_file_post", upload.single("uploaded_file"), postUploadHandler);
 
 // Create GET request
 app.get("/", (req, res) => {
@@ -26,6 +41,23 @@ function testFormRoute(req, res){
   res.sendFile(__dirname + '/public/test_Form.html');
 }
 
+
+  
+function handlePostEx(request,response){
+console.log(request.url);
+console.log(request.query);
+response.sendFile(__dirname + '/public/testFormPost.html');
+}
+
+
+ 
+ 
+function postUploadHandler(req,res){
+ console.log(req.body.veg);
+ console.log(req.file);
+ res.send("success posting");
+
+}
 
 
 
