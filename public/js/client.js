@@ -1,6 +1,6 @@
 window.onload=function(){
 
-    console.log("client js loaded");
+    console.log("client js loaded again");
 
     // get the myFavs element and add an event listener (click) to it:
   //  document.getElementById("myFavs").addEventListener("click",  function(){
