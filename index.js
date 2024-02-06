@@ -3,14 +3,14 @@ const express = require("express");
 
 // Initialize Express
 const app = express();
-const fileUpload = require('express-fileupload');
+//const fileUpload = require('express-fileupload');
 // Use the express-fileupload middleware
-app.use(fileUpload());
+//app.use(fileUpload());
 //for vercel
-require("dotenv").config();
-const url = process.env.BLOB_READ_WRITE_TOKEN;
+//require("dotenv").config();
+//const url = process.env.BLOB_READ_WRITE_TOKEN;
 //require { put } from '@vercel/blob';
-const { put } =  require("@vercel/blob");
+//const { put } =  require("@vercel/blob");
 
 
 // const multer = require("multer");
