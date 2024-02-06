@@ -60,19 +60,18 @@ response.sendFile(__dirname + '/public/testFormPost.html');
 }
 
 
- 
- 
 async function postUploadHandler(req,res){
  console.log(req.body);
- console.log("p");
+
  console.log(req.files.uploaded_file);
  console.log(req.files.uploaded_file.name)
  //req.files.uploaded_file.name
- const blob = await put(req.files.uploaded_file.name, req.files.uploaded_file.data, {
-    access: 'public',
-  });
-console.log(blob)
-res.send(blob);
+//  const blob = await put(req.files.uploaded_file.name, req.files.uploaded_file.data, {
+//     access: 'public',
+//   });
+// console.log(blob)
+// res.send(blob);
+res.send("success");
 }
 
 
