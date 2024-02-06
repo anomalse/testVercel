@@ -3,25 +3,34 @@ const express = require("express");
 
 // Initialize Express
 const app = express();
+const fileUpload = require('express-fileupload');
+// Use the express-fileupload middleware
+app.use(fileUpload());
+//for vercel
+require("dotenv").config();
+const url = process.env.BLOB_READ_WRITE_TOKEN;
+//require { put } from '@vercel/blob';
+const { put } =  require("@vercel/blob");
 
-const multer = require("multer");
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, `${__dirname}/public/uploaded_images/`);
-  },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    }
-  })
+// const multer = require("multer");
+
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, `${__dirname}/public/uploaded_images/`);
+//   },
+//     filename: function (req, file, cb) {
+//       cb(null, file.originalname)
+//     }
+//   })
   
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
 app.use(express.static(__dirname + '/public'));
 app.use('/fruitVegForm',testFormRoute);
 app.use('/postEx',handlePostEx);
-app.use("/upload_file_post", upload.single("uploaded_file"), postUploadHandler);
-//app.use("/upload_file_post", postUploadHandler);
+//app.use("/upload_file_post", upload.single("uploaded_file"), postUploadHandler);
+app.use("/upload_file_post", postUploadHandler);
 
 // Create GET request
 app.get("/", (req, res) => {
@@ -53,11 +62,17 @@ response.sendFile(__dirname + '/public/testFormPost.html');
 
  
  
-function postUploadHandler(req,res){
+async function postUploadHandler(req,res){
  console.log(req.body);
- //console.log(req.file);
- res.send("success posting");
-
+ console.log("p");
+ console.log(req.files.uploaded_file);
+ console.log(req.files.uploaded_file.name)
+ //req.files.uploaded_file.name
+ const blob = await put(req.files.uploaded_file.name, req.files.uploaded_file.data, {
+    access: 'public',
+  });
+console.log(blob)
+res.send(blob);
 }
 
 

@@ -15,7 +15,7 @@ window.onload=function(){
         method: 'POST',
         body: formData
     })
-  console.log(await response.text());
+  console.log(await response.json());
 })
 
 }
