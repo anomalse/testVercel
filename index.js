@@ -30,7 +30,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/fruitVegForm',testFormRoute);
 app.use('/postEx',handlePostEx);
 //app.use("/upload_file_post", upload.single("uploaded_file"), postUploadHandler);
-app.use("/upload_file_post", postUploadHandler);
+//app.use("/upload_file_post", postUploadHandler);
 
 // Create GET request
 app.get("/", (req, res) => {
@@ -60,19 +60,19 @@ response.sendFile(__dirname + '/public/testFormPost.html');
 }
 
 
-async function postUploadHandler(req,res){
- console.log(req.body);
+// async function postUploadHandler(req,res){
+//  console.log(req.body);
 
- console.log(req.files.uploaded_file);
- console.log(req.files.uploaded_file.name)
- //req.files.uploaded_file.name
-//  const blob = await put(req.files.uploaded_file.name, req.files.uploaded_file.data, {
-//     access: 'public',
-//   });
-// console.log(blob)
-// res.send(blob);
-res.send("success");
-}
+//  console.log(req.files.uploaded_file);
+//  console.log(req.files.uploaded_file.name)
+//  //req.files.uploaded_file.name
+// //  const blob = await put(req.files.uploaded_file.name, req.files.uploaded_file.data, {
+// //     access: 'public',
+// //   });
+// // console.log(blob)
+// // res.send(blob);
+// res.send("success");
+// }
 
 
 
