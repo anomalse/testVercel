@@ -1,4 +1,15 @@
 {
-    "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }
+    "headers": [
+        {
+          "source": "/p",
+          "headers": [
+            
+            { "key": "Access-Control-Allow-Origin", "value": "*" }
+          ]
+        }
+      ],
+    "rewrites": [
+        { "source": "/api/(.*)", "destination": "/api" },
+        { "source": "/p", "destination": "/postEx.html" }
 ]
 }

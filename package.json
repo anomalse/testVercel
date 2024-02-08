@@ -26,7 +26,13 @@
   "dependencies": {
   
     
+  "@vercel/blob": "^0.21.0",
+  
+    
   "express": "^4.18.2",
+  
+    
+  "express-fileupload": "^1.4.3",
   
     
   "vercel": "^33.4.1"
