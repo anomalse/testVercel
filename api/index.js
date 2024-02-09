@@ -49,8 +49,9 @@ app.post('/api/item/:slug',async(req, res) => {
   //  console.log(slug);
    switch(slug){
           case 'upload':
+           console.log(req);
            let body = req.body;
-           console.log(req.body);
+           //console.log(req.body);
           // console.log("again:)");
         //   console.log(handleUpload);
           try {
