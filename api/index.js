@@ -23,8 +23,7 @@ app.get('/api', (req, res) => {
 
 app.get('/api/item/:slug', (req, res) => {
   const { slug } = req.params;
-  console.log(handleUpload);
-  console.log(req.query);
+  //console.log(req.query);
 
   switch(slug){
     case 'varsArePassing':
