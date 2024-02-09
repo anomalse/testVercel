@@ -2,14 +2,14 @@
 /** to try::
  * https://jonathans199.medium.com/deploy-node-js-express-api-to-vercel-dbf4461795a5
  */
-//const app = require('express')();
-import express from 'express';
-const app = express();
+const app = require('express')();
+//import express from 'express';
+//const app = express();
 import { handleUpload } from '@vercel/blob/client';
 //console.log(vercelClient.handleUpload)
 
-//require('dotenv').config();
-import 'dotenv/config'
+require('dotenv').config();
+//import 'dotenv/config'
 const url = process.env.BLOB_READ_WRITE_TOKEN;
 
 
@@ -94,5 +94,5 @@ app.post('/api/item/:slug',async(req, res) => {
    }
 })
 
-//module.exports = app;
-export default app;
+module.exports = app;
+//export default app;
