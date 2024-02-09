@@ -5,8 +5,9 @@
 const app = require('express')();
 //import express from 'express';
 //const app = express();
-import { handleUpload } from '@vercel/blob/client';
+//import { handleUpload } from '@vercel/blob/client';
 //console.log(vercelClient.handleUpload)
+const { handleUpload } =  require('@vercel/blob/client');
 
 require('dotenv').config();
 //import 'dotenv/config'
@@ -49,6 +50,7 @@ app.post('/api/item/:slug',async(req, res) => {
    switch(slug){
           case 'upload':
            let body = req.body;
+           console.log("again:)");
            console.log(handleUpload);
           try {
             

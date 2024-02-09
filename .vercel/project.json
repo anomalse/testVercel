@@ -1,1 +1,15 @@
-{"projectId":"prj_WiwmUgsqIrZhnnpMWki5XRa73l7D","orgId":"team_300KgC8BolsQuZqAPfXk14Bu"}
+{
+  "projectId": "prj_WiwmUgsqIrZhnnpMWki5XRa73l7D",
+  "orgId": "team_300KgC8BolsQuZqAPfXk14Bu",
+  "settings": {
+    "createdAt": 1707164570775,
+    "framework": null,
+    "devCommand": null,
+    "installCommand": "npm install",
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "18.x"
+  }
+}
