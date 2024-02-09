@@ -1,4 +1,7 @@
 {
+  
+    "installCommand": "npm install",
+  
     "headers": [
         {
           "source": "/p",
