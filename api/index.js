@@ -3,7 +3,15 @@
  * https://jonathans199.medium.com/deploy-node-js-express-api-to-vercel-dbf4461795a5
  */
 const app = require('express')();
-const handleUpload  = require('@vercel/blob/client');
+const vercelClient  = require('@vercel/blob/client');
+console.log(vercelClient.handleUpload)
+
+require('dotenv').config();
+const url = process.env.BLOB_READ_WRITE_TOKEN;
+
+//require { put } from '@vercel/blob';
+//const { put } =  require("@vercel/blob");
+
 
 //const fileUpload = require('express-fileupload');
 //app.use(fileUpload());
@@ -31,7 +39,9 @@ app.get('/api', (req, res) => {
 
 app.get('/api/item/:slug', (req, res) => {
   const { slug } = req.params;
+  console.log(handleUpload);
   console.log(req.query);
+
   switch(slug){
     case 'varsArePassing':
         /* GET REQUEST EX */
@@ -62,17 +72,20 @@ app.post('/api/item/:slug',async(req, res) => {
           case 'upload':
            // console.log(req.body);
            let body = req.body;
+          // console.log(url);
+        //    console.log(req.files);
+        //res.send('succsess');
            //const body = await req.json();
-           try {
-            const jsonResponse = await handleUpload({
-              body,
-              req,
+          try {
+          const jsonResponse = await vercelClient.handleUpload({
+             body,
+             req,
               onBeforeGenerateToken: async (pathname /*, clientPayload */) => {
                 // Generate a client token for the browser to upload the file
                 // ⚠️ Authenticate and authorize users before generating the token.
                 // Otherwise, you're allowing anonymous uploads.
-         
                 return {
+              
                   allowedContentTypes: ['image/jpeg', 'image/png', 'image/gif'],
                   tokenPayload: JSON.stringify({
                     // optional, sent to your server on upload completion
@@ -97,38 +110,13 @@ app.post('/api/item/:slug',async(req, res) => {
               },
             });
          
-            return res.send('success');
+            //console.log(jsonResponse);
+            return res.send(jsonResponse);
           } catch (error) {
+            console.log(error);
             return res.send('error');
           }
    }
 })
-// app.post('/api/item/:slug',(req, res) => {
-//     const { slug } = req.params;
-//     console.log(slug);
-//     console.log("newweww");
-//     switch(slug){
-//       case 'upload_file_post':
-//         console.log(req.query.filename)
-//         //console.log(req.body);
-//         //console.log(req.files);
-//         //const { searchParams } = new URL(req.url);
-//        // const filename = searchParams.get('filename');
-//         res.end(`success`);
-//         //await runMiddleware(req, res, uploadMiddleware);
-//         //console.log(req.file.buffer);
-//         //console.log(req);
-//     }
-// })
-// export const config = {
-//     api: {
-//       bodyParser: false,
-//     },
-//   };
+
 module.exports = app;
-// export const config = {
-//     api: {
-//         bodyParser: false,
-//         externalResolver: true,
-//     },
-// };

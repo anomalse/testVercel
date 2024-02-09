@@ -25,41 +25,12 @@ form.addEventListener("submit",  async function(e){
   const name = document.getElementById("veg");
   console.log(name.value);
   const files = document.getElementById("uploaded_file");
- 
-  //console.log(files.files[0])
-
-   //const fd = new FormData();
-//   fd.append('veg', name.value);
- //fd.append('file',  files.files[0]);
-//  //console.log(fd._boundary)
-
-//const fd = new FormData(form);
-//  // const urlEncodedData = new URLSearchParams(fd).toString();
-
-//  // formData.append("uploaded_file", files.files[0]);
-//   let response = await fetch("api/item/upload_file_post", {
-//   method: 'POST',
-//   body: fd
-
-// })
 const file = files.files[0];
  const newBlob = await upload(file.name, file, {
             access: 'public',
             handleUploadUrl: '/api/item/upload',
           });
   console.log(newBlob);
-// // console.log(file);
-// const response = await fetch(
-//   `api/item/upload_file_post?filename=${file.name}`,
-//   {
-//     method: 'POST',
-//     body: fd
-//     // headers: {
-//     //   "Content-Type": "multipart/form-data"
-//     // }
-//   },
-// );
-// console.log(await response.text());
+  document.querySelector("#response").innerHTML = `<p><img src = ${newBlob.url} /></p>`;
 })
 
-//}
