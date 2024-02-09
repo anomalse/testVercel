@@ -2,33 +2,17 @@
 /** to try::
  * https://jonathans199.medium.com/deploy-node-js-express-api-to-vercel-dbf4461795a5
  */
-const app = require('express')();
-const vercelClient  = require('@vercel/blob/client');
-console.log(vercelClient.handleUpload)
+//const app = require('express')();
+import express from 'express';
+const app = express();
+import { handleUpload } from '@vercel/blob/client';
+//console.log(vercelClient.handleUpload)
 
-require('dotenv').config();
+//require('dotenv').config();
+import 'dotenv/config'
 const url = process.env.BLOB_READ_WRITE_TOKEN;
 
-//require { put } from '@vercel/blob';
-//const { put } =  require("@vercel/blob");
 
-
-//const fileUpload = require('express-fileupload');
-//app.use(fileUpload());
-// for the client...
-
-
-
-// Note that this option available for versions 1.0.0 and newer. 
-// app.use(fileUpload({
-//     useTempFiles : true,
-//     tempFileDir : '/tmp/'
-// }));
-// app.use((req, res, next) => {
-//     //res.header('Access-Control-Allow-Origin', '*');
-//     //next();
-//     console.log(req);
-//   });
 
 app.get('/api', (req, res) => {
   const path = `/api/item/${v4()}`;
@@ -60,24 +44,16 @@ app.get('/api/item/:slug', (req, res) => {
  
 });
 
-// export async function POST(request) {
-//     const body = await request.json();
-//     console.log(body);
-// }  
-
 app.post('/api/item/:slug',async(req, res) => {
       const { slug } = req.params;
-   console.log(slug);
+  //  console.log(slug);
    switch(slug){
           case 'upload':
-           // console.log(req.body);
            let body = req.body;
-          // console.log(url);
-        //    console.log(req.files);
-        //res.send('succsess');
-           //const body = await req.json();
+          //  console.log(req.body.type)
           try {
-          const jsonResponse = await vercelClient.handleUpload({
+            
+          const jsonResponse = await handleUpload({
              body,
              req,
               onBeforeGenerateToken: async (pathname /*, clientPayload */) => {
