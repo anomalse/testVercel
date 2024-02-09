@@ -50,8 +50,9 @@ app.post('/api/item/:slug',async(req, res) => {
    switch(slug){
           case 'upload':
            let body = req.body;
-           console.log("again:)");
-           console.log(handleUpload);
+           console.log(req.body);
+          // console.log("again:)");
+        //   console.log(handleUpload);
           try {
             
           const jsonResponse = await handleUpload({
