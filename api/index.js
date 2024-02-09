@@ -94,4 +94,5 @@ app.post('/api/item/:slug',async(req, res) => {
    }
 })
 
-module.exports = app;
+//module.exports = app;
+export default app;
