@@ -3,6 +3,7 @@
  * https://jonathans199.medium.com/deploy-node-js-express-api-to-vercel-dbf4461795a5
  */
 const app = require('express')();
+const bodyParser = require('body-parser')
 //import express from 'express';
 //const app = express();
 //import { handleUpload } from '@vercel/blob/client';
@@ -13,7 +14,9 @@ require('dotenv').config();
 //import 'dotenv/config'
 const url = process.env.BLOB_READ_WRITE_TOKEN;
 
-
+// parse application/json
+//app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/api', (req, res) => {
   const path = `/api/item/${v4()}`;
@@ -49,8 +52,12 @@ app.post('/api/item/:slug',async(req, res) => {
   //  console.log(slug);
    switch(slug){
           case 'upload':
-           console.log(req);
+          console.log("new")
+           console.log(req.body);
            let body = req.body;
+
+         // const body = JSON.stringify(req.body);
+          //console.log(body);
            //console.log(req.body);
           // console.log("again:)");
         //   console.log(handleUpload);
