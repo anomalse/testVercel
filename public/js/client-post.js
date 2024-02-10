@@ -27,13 +27,13 @@
 
        let fr = new FileReader();
        fr.onload = async function(){
-        console.log(fr.result);
+        //console.log(fr.result);
 
         const bodyF = new FormData();
         let t = {file1: fr.result, fileName:files.files[0].name};
 
-
-        let response = await fetch("api/", {
+        let response = await fetch("api/item/upload", {
+        //let response = await fetch("api/", {
         method: 'POST',
         headers: {
            "Content-Type": "application/json",
