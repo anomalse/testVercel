@@ -7,8 +7,18 @@ const fs = require('fs');
 
 
 export default async function handler(req, res) {
+console.log("here");  
+console.log(req.query)
+if(Object.keys(req.query).length !== 0){
+  console.log("get");
+  if(req.query.type ==="start"){
+    res.send({"fruit": req.query.fruits,"veg":req.query.vegs});
 
-// declare a regexp to match the non base64 first characters
+  }
+
+}
+else{
+  // declare a regexp to match the non base64 first characters
 let dataUrlRegExp = /^data:image\/\w+;base64,/;
 // remove the "header" of the data URL via the regexp
 let base64Data = req.body.file1.replace(dataUrlRegExp, "");
@@ -27,4 +37,7 @@ const blob = await put(req.body.fileName, imageBuffer, {
 
 
 return res.send(`Hello , you just parsed the request body!`);
+
+}
+
   }

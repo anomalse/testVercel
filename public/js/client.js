@@ -10,9 +10,9 @@ window.onload=function(){
     let favVeg =   document.getElementById("veg").value;
     console.log(favVeg);
     console.log(favFruit);
-    let jsonVals = {fruits : favFruit, vegs : favVeg}
+    let jsonVals = {type: "start", fruits : favFruit, vegs : favVeg}
  
-    let  response = await fetch('api/item/varsArePassing/?' + new URLSearchParams(jsonVals));
+    let  response = await fetch('api/?' + new URLSearchParams(jsonVals));
      console.log("the response::: ")
     // console.log(await response.text());
     let jsonResp = await response.json();
