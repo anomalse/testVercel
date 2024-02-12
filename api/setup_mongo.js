@@ -1,8 +1,8 @@
 require('dotenv').config();
 import {MongoClient} from 'mongodb';
 
-const db_find_some = function(){}
-const db_update_one = function(){}
+//const db_find_some = function(){}
+//const db_update_one = function(){}
 
 const db_insert_one = function(in_fruit,in_veg) {
   return new Promise (async(resolve, reject) => {
@@ -12,7 +12,7 @@ const db_insert_one = function(in_fruit,in_veg) {
   try {
     client = new MongoClient(process.env.MONGODB_URI);
     await client.connect();
-    //console.log(client);
+    console.log(client);
 
     const insert = await client
       .db('vercel')
