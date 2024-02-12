@@ -17,24 +17,22 @@ import {setup,db_insert_default,db_insert_one } from "./setup_mongo.js";
 
 export default async function handler(req, res) {
 console.log("here");  
-//if(connectionISSet===false){
+
   console.log('tests');
-  const message = await setup();
+  // const message = await setup();
 
-  if (message) {
-    res.status(500).json({
-      error: { message }
-    });
-  } else {
-   // connectionISSet=true;
-   // await res.revalidate(`/`);
-    //res.status(200).send('ok.'); //don't do that otherwise will not continue
-    console.log("had a connection");
+  // if (message) {
+  //   res.status(500).json({
+  //     error: { message }
+  //   });
+  // } else {
+  //  // connectionISSet=true;
+  //  // await res.revalidate(`/`);
+  //   //res.status(200).send('ok.'); //don't do that otherwise will not continue
+  //   console.log("had a connection");
 
-  }
-//}
+  // }
 
-//}
 
 
 console.log(req.query)
@@ -43,7 +41,7 @@ if(Object.keys(req.query).length !== 0){
   console.log("get");
   
   if(req.query.type ==="start"){
-    // let result = await db_insert_one(req.query.fruits,req.query.vegs);
+     let result = await db_insert_one(req.query.fruits,req.query.vegs);
     // //let result = await db_insert_default();
     // console.log(result);
     res.send({"fruit": req.query.fruits,"veg":req.query.vegs});

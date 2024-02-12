@@ -23,7 +23,8 @@ const db_insert_one = function(in_fruit,in_veg) {
      resolve('Successfully inserted a record');
     }
   } catch (error) {
-    reject ('Database is not ready yet');
+    //reject ('Database is not ready yet');
+    console.warn('Database is not ready yet. bbb...');
   } finally {
     if (client) {
       await client.close();
@@ -53,7 +54,8 @@ const db_insert_default = function() {
      resolve('Successfully inserted records');
     }
   } catch (error) {
-    reject ('Database is not ready yet');
+   // reject ('Database is not ready yet');
+   console.warn('Database is not ready yet. Skipping .a.a.a...');
   } finally {
     if (client) {
       await client.close();
