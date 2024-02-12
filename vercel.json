@@ -1,8 +1,5 @@
 {
-  
-    "installCommand": "npm install",
- 
-  
+
     "headers": [
         {
           "source": "/p",
@@ -13,7 +10,9 @@
         }
       ],
     "rewrites": [
+    
       { "source": "/api/(.*)", "destination": "/api" },
         { "source": "/p", "destination": "/postEx.html" }
 ]
+
 }
