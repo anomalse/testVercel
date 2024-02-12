@@ -4,7 +4,7 @@ import {MongoClient} from 'mongodb';
 const db_find_some = function(){}
 const db_update_one = function(){}
 
-const db_insert_one = function(in_veg,in_fruit) {
+const db_insert_one = function(in_fruit,in_veg) {
   return new Promise (async(resolve, reject) => {
   let client;
   let record = {fruit: in_fruit,veg:in_veg}
